@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<style>
+    img{
+        border-style: groove;
+        border-width: 10px;
+        border-color: orange;
+        display: none;
+        margin-top: 100px;
+        margin-left: 200px;
+        animation: linear 0.3;
+    }
+    input[type="button"]{
+        width: 80px;
+        height: 80px;
+        border-radius:30%;
+        outline: none;
+        margin-top: 10px
+    }
+</style>
+<body>
+    <input type="text" id="imgurl" value=""><br>
+    <input type="button"  value="播放" onclick="autoPlay()">
+    <input type="button"  value="添加图片" onclick="addImage()"><br>
+    <img src="" alt="" height="300px" id="img"><br>
+    <script>
+        var imageArr=new Array('./1.jpg','./2.jpg','./3.jpg');
+        var index=0;
+        function autoPlay(){
+            var imgObj=document.getElementById('img');
+            imgObj.style.display='inline';
+            if(imageArr.length<=0){
+                imgObj.setAttribute('alt','图片不有了，请添加。')
+            }else{
+                index=(index+1)%imageArr.length;
+                var imgId=imageArr[index]
+                imgObj.setAttribute('src',imgId)
+            }
+            setTimeout('autoPlay()',2000)
+            }
+
+        function addImage(){
+            var imgurl=document.getElementById('imgurl').value;
+                imageArr.push(imgurl)
+              //  alert(imageArr.length)
+        }
+          
+       
+    </script>
+</body>
+</html>
